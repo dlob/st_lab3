@@ -16,12 +16,12 @@ public class LabSeleniumHelper {
 
 	public void setUp() {
 		driver = SeleniumWebDriver.getDriver();
-		baseUrl = "http://accreditation.qtixx.com/test/";
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		baseUrl = "http://accreditation.qtixx.com/test";
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
 	
 	public void loginVereinWithUsernameAndPassword(String username, String password) throws Exception {
-	    driver.get(baseUrl + "/test/set-online/index.php");
+	    driver.get(baseUrl + "/set-online/index.php");
 	    driver.findElement(By.id("login_username")).clear();
 	    driver.findElement(By.id("login_username")).sendKeys(username);
 	    driver.findElement(By.id("login_passwd")).clear();
@@ -30,7 +30,7 @@ public class LabSeleniumHelper {
 	  }
 	
 	public void loginVeranstalterWithUsernameAndPassword(String username, String password) throws Exception {
-	    driver.get(baseUrl + "/test/set-online/index.php");
+	    driver.get(baseUrl + "/set-online/index.php");
 	    driver.findElement(By.id("admin_login_username")).clear();
 	    driver.findElement(By.id("admin_login_username")).sendKeys(username);
 	    driver.findElement(By.id("admin_login_passwd")).clear();

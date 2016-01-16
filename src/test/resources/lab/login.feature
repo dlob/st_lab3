@@ -18,4 +18,4 @@ Then Anmeldung fehlgeschlagen
 Scenario: Veranstaltungs-Verwaltungs Benutzer einloggen fehlgeschlagen
 Given Ich bin auf der Startseite
 When Ich melde mich mit dem Veranstaltungs-Verwaltungs Benutzer "maxschneider" und dem Passwort "muster123" an
-Then Anmeldung fehlgeschlage
+Then Anmeldung fehlgeschlagen
