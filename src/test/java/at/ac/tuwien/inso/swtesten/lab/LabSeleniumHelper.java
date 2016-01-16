@@ -58,6 +58,10 @@ public class LabSeleniumHelper {
 		driver.findElement(By.id("logoutMainButton")).click();
 	}
 
+	public void assertOnDashboard() throws Exception {
+		assertEquals(driver.getCurrentUrl(), "http://accreditation.qtixx.com/test/set-online/home_user_main.php?active_menu=dashboard");
+	}
+	
 	private boolean isElementPresent(By by) {
 		try {
 			driver.findElement(by);

@@ -38,4 +38,9 @@ public class LabStepDefinition {
 		labHelper.shutDown();
 	}
 	
+	@Then("^Ich bin eingeloggt und seh das Dashboard$")
+	public void ich_bin_eingeloggt_uns_seh_das_Dashboard() throws Throwable {
+	    labHelper.assertLoggedIn();
+	    
+	}
 }
