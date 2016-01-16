@@ -26,7 +26,7 @@ public class LabSeleniumHelper {
 
 	public void loginVereinWithUsernameAndPassword(String username,
 			String password) throws Exception {
-		driver.get(baseUrl + "/test/set-online/index.php");
+		driver.get(baseUrl + "/set-online/index.php");
 		driver.findElement(By.id("loginMainButton")).click();
 		driver.findElement(By.id("login_username")).clear();
 		driver.findElement(By.id("login_username")).sendKeys(username);
@@ -37,7 +37,7 @@ public class LabSeleniumHelper {
 
 	public void loginVeranstalterWithUsernameAndPassword(String username,
 			String password) throws Exception {
-		driver.get(baseUrl + "/test/set-online/index.php");
+		driver.get(baseUrl + "/set-online/index.php");
 		driver.findElement(By.id("loginMainButton")).click();
 		driver.findElement(By.id("admin_login_username")).clear();
 		driver.findElement(By.id("admin_login_username")).sendKeys(username);
@@ -46,12 +46,16 @@ public class LabSeleniumHelper {
 		driver.findElement(By.id("login2")).click();
 	}
 	
-	public void assertLoginSuccessful() {
+	public void assertLoggedIn() {
 		assertTrue(isElementPresent(By.id("logoutMainButton")));
 	}
 	
-	public void assertLoginFailed() {
-		assertFalse(!isElementPresent(By.id("logoutMainButton")));
+	public void assertNotLoggedIn() {
+		assertFalse(isElementPresent(By.id("logoutMainButton")));
+	}
+	
+	public void logout() throws Exception {
+		driver.findElement(By.id("logoutMainButton")).click();
 	}
 
 	private boolean isElementPresent(By by) {
