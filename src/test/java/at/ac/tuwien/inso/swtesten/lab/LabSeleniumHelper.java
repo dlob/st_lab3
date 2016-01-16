@@ -161,7 +161,7 @@ public class LabSeleniumHelper {
 	}
 
 	public boolean kategorieExists(String veranstaltung, String kategorie) {
-
+/*
 		driver.get(baseUrl
 				+ "/set-online/administration_veranstaltung.php?active_menu=adminveranstaltungen");
 		driver.findElement(By.linkText("Meine Veranstaltungen")).click();
@@ -175,12 +175,13 @@ public class LabSeleniumHelper {
 		}
 		
 		driver.findElement(By.linkText("Kategorien angelegt")).click();
-		
+	*/	
+		driver.findElement(By.linkText("Kategorien")).click();
 		return isElementPresent(By.xpath("//tr.dctabrowwhite/td[text() == "+kategorie));
 	}
 
 	public void assertKategorieExists(String veranstaltung, String kategorie) {
-		assertTrue(veranstaltungExists(veranstaltung));
+		assertTrue(kategorieExists(veranstaltung, kategorie));
 	}
 
 	public void assertOnDashboard() throws Exception {
