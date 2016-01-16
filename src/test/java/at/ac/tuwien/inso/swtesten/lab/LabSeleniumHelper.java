@@ -7,10 +7,12 @@ import static org.junit.Assert.assertFalse;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
@@ -217,5 +219,33 @@ public class LabSeleniumHelper {
 	public void shutDown() {
 		SeleniumWebDriver.closeDriver();
 	}
+	
+	
+	@Test
+	public void testCreateTeam() throws Exception {
+		driver.findElement(By.linkText("Mein Verein/Team")).click();
+		driver.findElement(By.name("manage_verein_name")).clear();
+		driver.findElement(By.name("manage_verein_name")).sendKeys(
+				"Musterverein");
+		driver.findElement(By.name("manage_verein_short")).clear();
+		driver.findElement(By.name("manage_verein_short")).sendKeys("MV");
+		driver.findElement(By.name("regtouradmin_submit")).click();
+	}
+	
+	  @Test
+	  public void testCreateSportler() throws Exception {
+	    driver.findElement(By.linkText("Meine Sportler")).click();
+	    driver.findElement(By.linkText("Neuen Sportler anlegen")).click();
+	    driver.findElement(By.name("name_firstname")).clear();
+	    driver.findElement(By.name("name_firstname")).sendKeys("Test");
+	    driver.findElement(By.name("name_lastname")).clear();
+	    driver.findElement(By.name("name_lastname")).sendKeys("Sportler");
+	    driver.findElement(By.name("name_geburt")).clear();
+	    driver.findElement(By.name("name_geburt")).sendKeys("01-01-1990");
+	    driver.findElement(By.name("sportler_submit")).click();
+	  }
 
+	public void assertSportlerAngelegt() {
+		assertEquals(driver.findElement(By.xpath("/html/body/div[2]/div[5]/div[2]/div[2]/table/tbody/tr[3]/td/p")).getText(), "Ihre Daten wurden erfolgreich gespeichert.");
+	}
 }

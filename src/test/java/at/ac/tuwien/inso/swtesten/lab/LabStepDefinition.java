@@ -1,5 +1,6 @@
 package at.ac.tuwien.inso.swtesten.lab;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -83,6 +84,27 @@ public class LabStepDefinition {
 	@Then("^eine Fehlermeldung erscheint$")
 	public void eine_Fehlermeldung_erscheint() throws Exception {
 		labHelper.assertErrorBox();
+		labHelper.shutDown();
+	}
+	
+	@Then("^When Ich klicke auf Mein Verein/Team und gebe \"([^\"]*)\" und \"([^\"]*)\" und klicke auf Abschicken$")
+	public void when_Ich_klicke_auf_Mein_Verein_Team_und_gebe_und_und_klicke_auf_Abschicken(String arg1, String arg2) throws Throwable {
+		labHelper.testCreateTeam();
+	}
+
+	@Then("^die Daten des Vereins wurden erfolgreich gespeichert$")
+	public void die_Daten_des_Vereins_wurden_erfolgreich_gespeichert() throws Throwable {
+		labHelper.shutDown();
+	}
+
+	@Then("^When Ich klicke auf Meine Sportler, Neuen Sportler anlegen und gebe Vorname \"([^\"]*)\", Nachname \"([^\"]*)\", Geburt \"([^\"]*)\" ein und klicke auf Abschicken$")
+	public void when_Ich_klicke_auf_Meine_Sportler_Neuen_Sportler_anlegen_und_gebe_Vorname_Nachname_Geburt_ein_und_klicke_auf_Abschicken(String arg1, String arg2, String arg3) throws Throwable {
+	    labHelper.testCreateSportler();
+	}
+
+	@Then("^der Sportler wurde erfolgreich angelegt$")
+	public void der_Sportler_wurde_erfolgreich_angelegt() throws Throwable {
+		labHelper.assertSportlerAngelegt();
 		labHelper.shutDown();
 	}
 }
