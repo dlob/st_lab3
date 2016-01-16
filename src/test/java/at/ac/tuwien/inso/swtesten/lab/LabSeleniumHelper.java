@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -109,11 +110,18 @@ public class LabSeleniumHelper {
 				+ "/set-online/administration_veranstaltung.php?active_menu=adminveranstaltungen");
 		driver.findElement(By.linkText("Meine Veranstaltungen")).click();
 
-		return isElementPresent(By.partialLinkText(veranstaltung));
+		List<WebElement> elements = driver.findElements(By.xpath("//tr[@class!='dctabheader']/td/a[@class='datalink2']/b"));
+		for(WebElement elem: elements) {
+			String x = elem.getText();
+			if(elem.getText().toLowerCase().equals(veranstaltung.toLowerCase()))
+				return true;
+		}
+		return false;
 	}
 
 	public void assertVeranstaltungExists(String veranstaltung) {
 		assertTrue(veranstaltungExists(veranstaltung));
+		
 	}
 
 	public void createKategorieInVeranstaltung(String veranstaltung,
@@ -123,7 +131,14 @@ public class LabSeleniumHelper {
 				+ "/set-online/administration_veranstaltung.php?active_menu=adminveranstaltungen");
 		driver.findElement(By.linkText("Meine Veranstaltungen")).click();
 
-		driver.findElement(By.partialLinkText(veranstaltung)).click();
+		List<WebElement> elements = driver.findElements(By.xpath("//tr[@class!='dctabheader']/td/a[@class='datalink2']"));
+		for(WebElement elem: elements) {
+			if(elem.findElement(By.tagName("b")).getText().toLowerCase().equals(veranstaltung.toLowerCase())) {
+				elem.click();
+				break;
+			}
+		}
+				
 		driver.findElement(By.linkText("Kategorien angelegt")).click();
 		driver.findElement(By.linkText("Neue Kategorie anlegen")).click();
 
@@ -150,7 +165,14 @@ public class LabSeleniumHelper {
 		driver.get(baseUrl
 				+ "/set-online/administration_veranstaltung.php?active_menu=adminveranstaltungen");
 		driver.findElement(By.linkText("Meine Veranstaltungen")).click();
-		driver.findElement(By.partialLinkText(veranstaltung)).click();
+
+		List<WebElement> elements = driver.findElements(By.xpath("//tr[@class!='dctabheader']/td/a[@class='datalink2']"));
+		for(WebElement elem: elements) {
+			if(elem.findElement(By.tagName("b")).getText().toLowerCase().equals(veranstaltung.toLowerCase())) {
+				elem.click();
+				break;
+			}
+		}
 		
 		driver.findElement(By.linkText("Kategorien angelegt")).click();
 		

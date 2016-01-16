@@ -51,6 +51,7 @@ public class LabStepDefinition {
 	@Then("^Veranstaltung \"([^\"]*)\" existiert$")
 	public void veranstaltung_existiert(String arg1) throws Throwable {
 		labHelper.assertVeranstaltungExists(arg1);
+		labHelper.shutDown();
 	}
 
 	@When("^Ich erstelle eine neue Kategorie in der Veranstaltung \"([^\"]*)\" mit Bezeichnung \"([^\"]*)\" Alter-von \"([^\"]*)\" Alter-bis \"([^\"]*)\" Geschlecht \"([^\"]*)\" Teamkategorie \"([^\"]*)\"$")
@@ -64,6 +65,7 @@ public class LabStepDefinition {
 	public void kategorie_in_existiert(String arg1, String arg2)
 			throws Throwable {
 		labHelper.assertKategorieExists(arg1, arg2);
+		labHelper.shutDown();
 	}
 	
 	@Then("^Ich bin eingeloggt und seh das Dashboard$")
