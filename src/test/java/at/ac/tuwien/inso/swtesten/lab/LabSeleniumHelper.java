@@ -21,7 +21,7 @@ public class LabSeleniumHelper {
 	public void setUp() {
 		driver = SeleniumWebDriver.getDriver();
 		baseUrl = "http://accreditation.qtixx.com/test";
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 	}
 
 	public void loginVereinWithUsernameAndPassword(String username,
@@ -61,7 +61,11 @@ public class LabSeleniumHelper {
 	public void assertOnDashboard() throws Exception {
 		assertEquals(driver.getCurrentUrl(), "http://accreditation.qtixx.com/test/set-online/home_user_main.php?active_menu=dashboard");
 	}
-	
+
+	public void assertOnAdminDashboard() throws Exception {
+		assertEquals(driver.getCurrentUrl(), "http://accreditation.qtixx.com/test/set-online/administration.php?active_menu=Administration");
+	}
+		
 	private boolean isElementPresent(By by) {
 		try {
 			driver.findElement(by);
