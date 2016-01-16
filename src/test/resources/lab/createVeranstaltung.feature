@@ -12,5 +12,5 @@ Then Veranstaltung "meine Veranstaltung" existiert
 
 Scenario: Kategorie anlegen
 Given Ich bin auf der Startseite
-When Ich erstelle eine neue Kategorie in der Veranstaltung "meine Veranstaltung" mit Bezeichnung "Alte Hasen" Alter-von "56" Alter-bis "99" Geschlecht "maennlich und weiblich" Teamkategorie "false"
+When Ich erstelle eine neue Kategorie in der Veranstaltung "meine Veranstaltung" mit Bezeichnung "Alte Hasen 2" Alter-von "56" Alter-bis "99" Geschlecht "maennlich und weiblich" Teamkategorie "false"
 Then Kategorie "Alte Hasen" in "meine Veranstaltungen" existiert
