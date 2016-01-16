@@ -15,22 +15,27 @@ public class LabStepDefinition {
 
 	@When("^Ich melde mich mit dem Team Benutzer \"([^\"]*)\" und dem Passwort \"([^\"]*)\" an$")
 	public void ich_melde_mich_mit_dem_Team_Benutzer_und_dem_Passwort_an(String username, String password) throws Throwable {
-	    labHelper.loginVereinWithUsernameAndPassword(username, password);
-	}
-
-	@Then("^Ich bin eingeloggt$")
-	public void ich_bin_eingeloggt() throws Throwable {
-	    labHelper.assertLoginSuccessful();
+		labHelper.assertNotLoggedIn();
+		labHelper.loginVereinWithUsernameAndPassword(username, password);
 	}
 
 	@When("^Ich melde mich mit dem Veranstaltungs-Verwaltungs Benutzer \"([^\"]*)\" und dem Passwort \"([^\"]*)\" an$")
 	public void ich_melde_mich_mit_dem_Veranstaltungs_Verwaltungs_Benutzer_und_dem_Passwort_an(String username, String password) throws Throwable {
-	    labHelper.loginVeranstalterWithUsernameAndPassword(username, password);
+		labHelper.assertNotLoggedIn();
+		labHelper.loginVeranstalterWithUsernameAndPassword(username, password);
+	}
+
+	@Then("^Ich bin eingeloggt$")
+	public void ich_bin_eingeloggt() throws Throwable {
+	    labHelper.assertLoggedIn();
+	    labHelper.logout();
+		labHelper.shutDown();
 	}
 
 	@Then("^Anmeldung fehlgeschlagen$")
 	public void anmeldung_fehlgeschlagen() throws Throwable {
-		labHelper.assertLoginFailed();
+		labHelper.assertNotLoggedIn();
+		labHelper.shutDown();
 	}
 	
 }

@@ -46,12 +46,12 @@ public class LabSeleniumHelper {
 		driver.findElement(By.id("login2")).click();
 	}
 	
-	public void assertLoginSuccessful() {
+	public void assertLoggedIn() {
 		assertTrue(isElementPresent(By.id("logoutMainButton")));
 	}
 	
-	public void assertLoginFailed() {
-		assertFalse(!isElementPresent(By.id("logoutMainButton")));
+	public void assertNotLoggedIn() {
+		assertFalse(isElementPresent(By.id("logoutMainButton")));
 	}
 	
 	public void logout() throws Exception {
