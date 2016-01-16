@@ -1,4 +1,4 @@
-package lab;
+package at.ac.tuwien.inso.swtesten.lab;
 
 import java.util.concurrent.TimeUnit;
 
