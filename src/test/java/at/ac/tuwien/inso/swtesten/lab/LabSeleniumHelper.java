@@ -65,7 +65,11 @@ public class LabSeleniumHelper {
 	public void assertOnAdminDashboard() throws Exception {
 		assertEquals(driver.getCurrentUrl(), "http://accreditation.qtixx.com/test/set-online/administration.php?active_menu=Administration");
 	}
-		
+	
+	public void assertErrorBox() throws Exception {
+		assertTrue(isElementPresent(By.cssSelector("li.global-message-item.error span.msg-text")));
+	}
+	
 	private boolean isElementPresent(By by) {
 		try {
 			driver.findElement(by);

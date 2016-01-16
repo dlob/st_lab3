@@ -48,4 +48,10 @@ public class LabStepDefinition {
 	    labHelper.assertLoggedIn();
 	    labHelper.assertOnAdminDashboard();
 	}
+	
+	@Then("^eine Fehlermeldung erscheint$")
+	public void eine_Fehlermeldung_erscheint() throws Exception {
+		labHelper.assertErrorBox();
+		labHelper.shutDown();
+	}
 }
