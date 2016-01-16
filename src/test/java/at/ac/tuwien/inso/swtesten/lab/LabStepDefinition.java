@@ -28,7 +28,6 @@ public class LabStepDefinition {
 	@Then("^Ich bin eingeloggt$")
 	public void ich_bin_eingeloggt() throws Throwable {
 	    labHelper.assertLoggedIn();
-	    labHelper.logout();
 		labHelper.shutDown();
 	}
 
@@ -41,6 +40,12 @@ public class LabStepDefinition {
 	@Then("^Ich bin eingeloggt und seh das Dashboard$")
 	public void ich_bin_eingeloggt_uns_seh_das_Dashboard() throws Throwable {
 	    labHelper.assertLoggedIn();
-	    
+	    labHelper.assertOnDashboard();
+	}
+	
+	@Then("^Ich bin eingeloggt und seh das Administrator Dashboard$")
+	public void ich_bin_eingeloggt_uns_seh_das_Administrator_Dashboard() throws Throwable {
+	    labHelper.assertLoggedIn();
+	    labHelper.assertOnAdminDashboard();
 	}
 }
