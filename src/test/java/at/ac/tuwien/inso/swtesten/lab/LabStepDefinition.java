@@ -20,7 +20,7 @@ public class LabStepDefinition {
 
 	@Then("^Ich bin eingeloggt$")
 	public void ich_bin_eingeloggt() throws Throwable {
-	    
+	    labHelper.assertLoginSuccessful();
 	}
 
 	@When("^Ich melde mich mit dem Veranstaltungs-Verwaltungs Benutzer \"([^\"]*)\" und dem Passwort \"([^\"]*)\" an$")
@@ -30,7 +30,7 @@ public class LabStepDefinition {
 
 	@Then("^Anmeldung fehlgeschlagen$")
 	public void anmeldung_fehlgeschlagen() throws Throwable {
-	    
+		labHelper.assertLoginFailed();
 	}
 	
 }

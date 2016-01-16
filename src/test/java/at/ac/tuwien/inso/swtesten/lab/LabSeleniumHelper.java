@@ -1,5 +1,9 @@
 package at.ac.tuwien.inso.swtesten.lab;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
+
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -42,12 +46,12 @@ public class LabSeleniumHelper {
 		driver.findElement(By.id("login2")).click();
 	}
 	
-	public boolean loginSuccessful() {
-		return isElementPresent(By.id("logoutMainButton"));
+	public void assertLoginSuccessful() {
+		assertTrue(isElementPresent(By.id("logoutMainButton")));
 	}
 	
-	public boolean loginFailed() {
-		return !loginSuccessful();
+	public void assertLoginFailed() {
+		assertFalse(!isElementPresent(By.id("logoutMainButton")));
 	}
 
 	private boolean isElementPresent(By by) {
