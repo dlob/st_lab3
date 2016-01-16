@@ -3,7 +3,7 @@ Feature: Verstanstaltung anlegen
 Background: 
 Given Ich bin auf der Startseite
 When Ich melde mich mit dem Veranstaltungs-Verwaltungs Benutzer "maxmuster" und dem Passwort "muster123" an
-Then Ich bin eingeloggt
+Then Ich bin eingeloggt und seh das Administrator Dashboard
 
 Scenario: Veranstaltung anlegen
 Given Ich bin auf der Startseite

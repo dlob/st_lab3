@@ -4,10 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
 
-import java.util.List;
 import java.util.concurrent.TimeUnit;
-
-import junit.framework.Assert;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
@@ -26,7 +23,7 @@ public class LabSeleniumHelper {
 	public void setUp() {
 		driver = SeleniumWebDriver.getDriver();
 		baseUrl = "http://accreditation.qtixx.com/test";
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 	}
 
 	public void loginVereinWithUsernameAndPassword(String username,
@@ -164,6 +161,18 @@ public class LabSeleniumHelper {
 		assertTrue(veranstaltungExists(veranstaltung));
 	}
 
+	public void assertOnDashboard() throws Exception {
+		assertEquals(driver.getCurrentUrl(), "http://accreditation.qtixx.com/test/set-online/home_user_main.php?active_menu=dashboard");
+	}
+
+	public void assertOnAdminDashboard() throws Exception {
+		assertEquals(driver.getCurrentUrl(), "http://accreditation.qtixx.com/test/set-online/administration.php?active_menu=Administration");
+	}
+	
+	public void assertErrorBox() throws Exception {
+		assertTrue(isElementPresent(By.cssSelector("li.global-message-item.error span.msg-text")));
+	}
+	
 	private boolean isElementPresent(By by) {
 		try {
 			driver.findElement(by);
