@@ -58,3 +58,4 @@ local.properties
 .springBeans
 
 .DS_Store
+/target/
